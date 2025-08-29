@@ -1,0 +1,42 @@
+name: Preprocessing Pipeline CI
+ 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-preprocessing:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Setup Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12.7"
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Run preprocessing script
+      - name: Run preprocessing pipeline
+        run: |
+          python preprocessing.py dataset/train_cholesterol.csv dataset/test_cholesterol.csv preprocessed_data
+
+      # Upload hasil ke artifact
+      - name: Upload preprocessed data
+        uses: actions/upload-artifact@v3
+        with:
+          name: preprocessed-datasets
+          path: preprocessed_data/
