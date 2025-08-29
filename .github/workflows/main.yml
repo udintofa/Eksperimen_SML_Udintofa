@@ -1,5 +1,5 @@
 name: Preprocessing Pipeline CI
-
+ 
 on:
   push:
     branches:
@@ -32,11 +32,11 @@ jobs:
       # Run preprocessing script
       - name: Run preprocessing pipeline
         run: |
-          python preprocessing.py dataset/train_cholesterol.csv dataset/test_cholesterol.csv preprocessed_data
+          python preprocessing/automate_udin-must...py dataset/train_cholesterol.csv dataset/test_cholesterol.csv preprocessing/preprocessed_data
 
       # Upload hasil ke artifact
       - name: Upload preprocessed data
         uses: actions/upload-artifact@v4
         with:
           name: preprocessed-datasets
-          path: preprocessed_data/
+          path: preprocessing/preprocessed_data/
