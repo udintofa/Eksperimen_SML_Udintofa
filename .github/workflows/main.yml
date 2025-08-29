@@ -1,5 +1,5 @@
 name: Preprocessing Pipeline CI
- 
+
 on:
   push:
     branches:
@@ -15,13 +15,13 @@ jobs:
     steps:
       # Checkout repo
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Setup Python
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.12.7"
+          python-version: "3.12"
 
       # Install dependencies
       - name: Install dependencies
@@ -36,7 +36,7 @@ jobs:
 
       # Upload hasil ke artifact
       - name: Upload preprocessed data
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: preprocessed-datasets
           path: preprocessed_data/
