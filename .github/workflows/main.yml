@@ -32,7 +32,7 @@ jobs:
       # Run preprocessing script
       - name: Run preprocessing pipeline
         run: |
-          python preprocessing/automate_udin-must...py dataset/train_cholesterol.csv dataset/test_cholesterol.csv preprocessing/preprocessed_data
+          python preprocessing/automate_udin-mustofa.py dataset/train_cholesterol.csv dataset/test_cholesterol.csv preprocessing/preprocessed_data
 
       # Upload hasil ke artifact
       - name: Upload preprocessed data
